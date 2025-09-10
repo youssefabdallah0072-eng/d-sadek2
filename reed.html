@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Bull Variants - Discover Your Energy</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        /* Custom Styles */
+        :root {
+            --teal-primary: #00a7b5;
+            --teal-light: #a0e7e5;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9fafb;
+        }
+        
+        .hero-banner {
+            background: linear-gradient(to right, #1e3a8a, #111827);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .can-shadow {
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+        }
+        
+        .animated-can {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .variant-card {
+            transition: transform 0.3s ease;
+        }
+        
+        .variant-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .nutrition-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        .nutrition-table th, .nutrition-table td {
+            border: 1px solid #e5e7eb;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .nutrition-table th {
+            background-color: #f3f4f6;
+        }
+        
+        .teal-bg {
+            background-color: var(--teal-primary);
+        }
+        
+        .teal-text {
+            color: var(--teal-primary);
+        }
+        
+        .teal-border {
+            border-color: var(--teal-primary);
+        }
+        
+        .compare-table th, .compare-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .compare-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        
+        .product-detail {
+            scroll-margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0 font-bold text-2xl text-gray-800">
+                        Red Bull <span class="teal-text">Variants</span>
+                    </a>
+                    <div class="hidden md:ml-10 md:flex md:space-x-8">
+                        <a href="#" class="teal-text px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#products" class="text-gray-600 hover:teal-text px-3 py-2 rounded-md text-sm font-medium">Products</a>
+                        <a href="#compare" class="text-gray-600 hover:teal-text px-3 py-2 rounded-md text-sm font-medium">Compare</a>
+                        <a href="#about" class="text-gray-600 hover:teal-text px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#contact" class="text-gray-600 hover:teal-text px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <button class="bg-teal-primary hover:bg-teal-600 text-white px-4 py-2 rounded-md text-sm font-medium">
+                        <i class="fas fa-user mr-1"></i> Admin Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                        Discover Your <span class="text-teal-light">Energy</span>
+                    </h1>
+                    <p class="mt-6 text-xl max-w-3xl">
+                        Explore the full range of Red Bull variants and find your perfect energy boost. From classic to tropical, we have the perfect drink for every occasion.
+                    </p>
+                    <div class="mt-10 flex space-x-4">
+                        <a href="#products" class="teal-bg hover:bg-teal-600 text-white px-6 py-3 rounded-lg font-medium">
+                            Explore Products
+                        </a>
+                        <a href="#compare" class="border border-white hover:bg-white hover:text-gray-900 text-white px-6 py-3 rounded-lg font-medium">
+                            Compare Variants
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1622480771645-8d3c1c934abb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Red Bull energy drink can with dynamic lighting" 
+                         class="animated-can can-shadow h-64 md:h-96 object-contain">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Variants Section -->
+    <section id="products" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900">Red Bull Variants</h2>
+                <p class="mt-4 text-lg text-gray-600">Discover our full range of energy drinks</p>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- Original -->
+                <div class="variant-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center p-6">
+                        <img src="https://images.unsplash.com/photo-1607582544958-1e6d0da9c514?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Red Bull Original energy drink can with blue and silver design" 
+                             class="h-40 object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900">Red Bull Original</h3>
+                        <p class="mt-2 text-teal-primary font-medium">Gives You Wings</p>
+                        <p class="mt-2 text-gray-600">The classic energy drink that gives you wings. Perfect for whenever you need a boost.</p>
+                        <a href="#original" class="mt-4 teal-text hover:text-teal-700 font-medium inline-flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sugarfree -->
+                <div class="variant-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-blue-50 flex items-center justify-center p-6">
+                        <img src="https://images.unsplash.com/photo-1622480771645-8d3c1c934abb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Red Bull Sugarfree silver and blue can with clear labeling" 
+                             class="h-40 object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900">Red Bull Sugarfree</h3>
+                        <p class="mt-2 text-teal-primary font-medium">Zero Sugar, Full Energy</p>
+                        <p class="mt-2 text-gray-600">All the energy with zero sugar. Same great Red Bull taste without the calories.</p>
+                        <a href="#sugarfree" class="mt-4 teal-text hover:text-teal-700 font-medium inline-flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tropical -->
+                <div class="variant-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-yellow-50 flex items-center justify-center p-6">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Red Bull Tropical Edition yellow can with exotic fruit graphics" 
+                             class="h-40 object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-90">Red Bull Tropical</h3>
+                        <p class="mt-2 text-teal-primary font-medium">Tropical Energy Boost</p>
+                        <p class="mt-2 text-gray-600">A tropical twist on the original. Exotic fruit flavor for a taste of paradise.</p>
+                        <a href="#tropical" class="mt-4 teal-text hover:text-teal-700 font-medium inline-flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Details Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-12">Product Details</h2>
+            
+            <!-- Original Details -->
+            <div id="original" class="product-detail bg-white rounded-lg shadow-md overflow-hidden mb-16">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8 flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1607582544958-1e6d0da9c514?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Detailed view of Red Bull Original can showing branding and design" 
+                             class="h-80 object-contain">
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <h3 class="text-2xl font-bold text-gray-900">Red Bull Original</h3>
+                        <p class="mt-2 text-teal-primary text-xl font-medium">Gives You Wings</p>
+                        <p class="mt-4 text-gray-600">The classic energy drink that gives you wings. Perfect for whenever you need a boost.</p>
+                        
+                        <div class="mt-6">
+                            <h4 class="text-lg font-medium text-gray-900">Nutritional Information</h4>
+                            <table class="nutrition-table mt-4">
+                                <tr>
+                                    <th>Nutrient</th>
+                                    <th>Per 100ml</th>
+                                    <th>Per Can (250ml)</th>
+                                </tr>
+                                <tr>
+                                    <td>Energy</td>
+                                    <td>45 kcal</td>
+                                    <td>112.5 kcal</td>
+                                </tr>
+                                <tr>
+                                    <td>Protein</td>
+                                    <td>0g</td>
+                                    <td>0g</td>
+                                </tr>
+                                <tr>
+                                    <td>Carbohydrates</td>
+                                    <td>11g</td>
+                                    <td>27.5g</td>
+                                </tr>
+                                <tr>
+                                    <td>Sugar</td>
+                                    <td>11g</td>
+                                    <td>27.5g</td>
+                                </tr>
+                                <tr>
+                                    <td>Caffeine</td>
+                                    <td>32mg</td>
+                                    <td>80mg</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class="mt-8 flex space-x-4">
+                            <button class="teal-bg hover:bg-teal-600 text-white px-6 py-2 rounded-md font-medium">
+                                Add to Cart
+                            </button>
+                            <button class="border teal-border text-teal-primary hover:bg-teal-50 px-6 py-2 rounded-md font-medium">
+                                <i class="far fa-heart mr-2"></i> Favorite
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Repeat similar detail sections for other variants -->
+        </div>
+    </section>
+
+    <!-- Compare Section -->
+    <section id="compare" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-12">Compare Variants</h2>
+            
+            <div class="overflow-x-auto">
+                <table class="compare-table min-w-full">
+                    <thead>
+                        <tr>
+                            <th class="text-left">Features</th>
+                            <th class="text-center">Original</th>
+                            <th class="text-center">Sugarfree</th>
+                            <th class="text-center">Tropical</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-medium">Calories</td>
+                            <td class="text-center">110</td>
+                            <td class="text-center">10</td>
+                            <td class="text-center">110</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Caffeine (mg)</td>
+                            <td class="text-center">80</td>
+                            <td class="text-center">80</td>
+                            <td class="text-center">80</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Sugar (g)</td>
+                            <td class="text-center">27</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">27</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Vitamin B3</td>
+                            <td class="text-center"><i class="fas fa-check teal-text"></i></td>
+                            <td class="text-center"><i class="fas fa-check teal-text"></i></td>
+                            <td class="text-center"><i class="fas fa-check teal-text"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Vitamin B5</td>
+                            <td class="text-center"><i class="fas fa-check teal-text"></i></td>
+                            <td class="text-center"><i class="fas fa-check teal-text"></i></td>
+                            <td class="text-center"><i class="fas fa-check teal-text"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Vitamin B6</td>
+                            <td class="text-center"><i class="fas fa-check teal-text"></i></td>
+                            <td class="text-center"><i class="fas fa-check teal-text"></i></td>
+                            <td class="text-center"><i class="fas fa-check teal-text"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Vitamin B12</td>
+                            <td class="text-center"><i class="fas fa-check teal-text"></i></td>
+                            <td class="text-center"><i class="fas fa-check teal-text"></i></td>
+                            <td class="text-center"><i class="fas fa-check teal-text"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Price</td>
+                            <td class="text-center">$2.99</td>
+                            <td class="text-center">$2.99</td>
+                            <td class="text-center">$2.99</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-12">About Red Bull</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Our Story</h3>
+                    <p class="text-gray-600">
+                        Red Bull Energy Drink was launched in 1987 and created the energy drink category worldwide. 
+                        Through exclusive and innovative marketing concepts, Red Bull has established itself as the 
+                        leading energy drink in the market.
+                    </p>
+                    <p class="text-gray-600 mt-4">
+                        The unique combination of high-quality ingredients – caffeine, taurine, B-group vitamins, and sucrose and glucose – 
+                        developed the product into a favorite among athletes, students, and professionals in highly demanding situations.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Our Mission</h3>
+                    <p class="text-gray-600">
+                        Red Bull gives wings to people and ideas. The company's mission is to support and promote 
+                        these activities all over the world through its "Gives You Wings" philosophy.
+                    </p>
+                    <p class="text-gray-600 mt-4">
+                        We are committed to the highest level of quality and continuously work to improve our products 
+                        and develop new exciting variants to meet the evolving needs of our consumers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-12">Contact Us</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                            <input type="text" id="name" name="name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-teal-500 focus:border-teal-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" id="email" name="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-teal-500 focus:border-teal-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-teal-500 focus:border-teal-500"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full teal-bg hover:bg-teal-600 text-white py-2 px-4 rounded-md font-medium">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Get in Touch</h3>
+                    <p class="text-gray-600 mb-6">
+                        Have questions about our products or want to provide feedback? We'd love to hear from you.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 teal-text mt-1">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-900">Address</p>
+                                <p class="text-sm text-gray-600">123 Energy Street, Suite 100<br>New York, NY 10001</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 teal-text mt-1">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-900">Phone</p>
+                                <p class="text-sm text-gray-600">+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 teal-text mt-1">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-900">Email</p>
+                                <p class="text-sm text-gray-600">info@redbullvariants.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Red Bull Variants</h3>
+                    <p class="text-gray-300">Discover the perfect energy drink for your lifestyle with our wide range of Red Bull variants.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-teal-light">Home</a></li>
+                        <li><a href="#products" class="text-gray-300 hover:text-teal-light">Products</a></li>
+                        <li><a href="#compare" class="text-gray-300 hover:text-teal-light">Compare</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-teal-light">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-teal-light">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-teal-light">
+                            <i class="fab fa-facebook-f fa-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-teal-light">
+                            <i class="fab fa-twitter fa-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-teal-light">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-teal-light">
+                            <i class="fab fa-youtube fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p class="text-gray-300">© 2023 Red Bull Variants. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for page elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate hero text
+            anime({
+                targets: '.hero-banner h1, .hero-banner p',
+                translateY: [50, 0],
+                opacity: [0, 1],
+                duration: 1500,
+                easing: 'easeOutQuart',
+                delay: anime.stagger(200)
+            });
+            
+            // Animate product cards on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        anime({
+                            targets: entry.target,
+                            translateY: [100, 0],
+                            opacity: [0, 1],
+                            duration: 1000,
+                            easing: 'easeOutQuart'
+                        });
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.variant-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
